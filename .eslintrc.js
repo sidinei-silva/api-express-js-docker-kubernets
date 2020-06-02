@@ -15,6 +15,10 @@ module.exports = {
   plugins: ['prettier', 'eslint-plugin-import-helpers'],
   rules: {
     'prettier/prettier': 'error',
+    'class-methods-use-this': 'off',
+    'no-param-reassign': 'off',
+    camelcase: 'off',
+    'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
     'import-helpers/order-imports': [
       'warn',
       {
