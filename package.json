@@ -6,5 +6,8 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "sucrase": "^3.15.0"
   }
 }
