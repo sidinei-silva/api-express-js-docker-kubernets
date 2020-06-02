@@ -5,6 +5,7 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
+    'prettier'
   ],
   globals: {
     Atomics: 'readonly',
@@ -14,8 +15,9 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: 'module',
   },
-  plugins: ["eslint-plugin-import-helpers"],
+  plugins: [ 'prettier', "eslint-plugin-import-helpers"],
   rules: {
+    "prettier/prettier": "error",
     "import-helpers/order-imports": [
       'warn',
       {
