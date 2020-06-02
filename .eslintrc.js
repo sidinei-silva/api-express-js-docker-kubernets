@@ -3,10 +3,7 @@ module.exports = {
     es6: true,
     node: true,
   },
-  extends: [
-    'airbnb-base',
-    'prettier'
-  ],
+  extends: ['airbnb-base', 'prettier'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -15,10 +12,10 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: 'module',
   },
-  plugins: [ 'prettier', "eslint-plugin-import-helpers"],
+  plugins: ['prettier', 'eslint-plugin-import-helpers'],
   rules: {
-    "prettier/prettier": "error",
-    "import-helpers/order-imports": [
+    'prettier/prettier': 'error',
+    'import-helpers/order-imports': [
       'warn',
       {
         // example configuration
@@ -28,9 +25,8 @@ module.exports = {
           '/^express/',
           'module',
           '/^@shared/',
-          ['sibling','/module/', '/entity/' , '/controller/', '/service/'],
-          [  'parent', 'index'],
-
+          ['sibling', '/module/', '/entity/', '/controller/', '/service/'],
+          ['parent', 'index'],
         ],
         alphabetize: { order: 'asc', ignoreCase: true },
       },
