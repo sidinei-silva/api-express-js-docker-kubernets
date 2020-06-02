@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Sidinei Silva <sidinei.silva02@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start:development": "nodemon src/server.js"
+  },
   "dependencies": {
     "express": "^4.17.1"
   },
