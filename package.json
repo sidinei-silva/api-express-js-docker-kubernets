@@ -1,0 +1,7 @@
+{
+  "name": "api_gestao_vendas",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Sidinei Silva <sidinei.silva02@gmail.com>",
+  "license": "MIT"
+}
