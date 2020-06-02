@@ -2,6 +2,8 @@ import 'dotenv/config';
 
 import express from 'express';
 
+import 'express-async-errors';
+import handler from './app/middlewares/handler.middleware';
 import routes from './routes';
 
 class App {
@@ -9,6 +11,7 @@ class App {
     this.server = express();
     this.middlewares();
     this.routes();
+    this.exceptionHandler();
   }
 
   middlewares() {
@@ -17,6 +20,12 @@ class App {
 
   routes() {
     this.server.use(routes);
+  }
+
+  exceptionHandler() {
+    this.server.use((err, req, res, next) => {
+      return handler(err, req, res);
+    });
   }
 }
 
