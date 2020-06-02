@@ -2,6 +2,10 @@ import 'dotenv/config';
 
 import express from 'express';
 
+import cors from 'cors';
+
+import 'express-async-errors';
+import handler from './app/middlewares/handler.middleware';
 import routes from './routes';
 
 class App {
@@ -9,14 +13,22 @@ class App {
     this.server = express();
     this.middlewares();
     this.routes();
+    this.exceptionHandler();
   }
 
   middlewares() {
     this.server.use(express.json());
+    this.server.use(cors());
   }
 
   routes() {
     this.server.use(routes);
+  }
+
+  exceptionHandler() {
+    this.server.use((err, req, res, next) => {
+      return handler(err, req, res);
+    });
   }
 }
 
