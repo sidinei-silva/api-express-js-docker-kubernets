@@ -14,6 +14,24 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: 'module',
   },
+  plugins: ["eslint-plugin-import-helpers"],
   rules: {
+    "import-helpers/order-imports": [
+      'warn',
+      {
+        // example configuration
+        newlinesBetween: 'always',
+        groups: [
+          '/^dotenv/',
+          '/^express/',
+          'module',
+          '/^@shared/',
+          ['sibling','/module/', '/entity/' , '/controller/', '/service/'],
+          [  'parent', 'index'],
+
+        ],
+        alphabetize: { order: 'asc', ignoreCase: true },
+      },
+    ],
   },
 };
