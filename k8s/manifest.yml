@@ -1,0 +1,43 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: app-um-loadbalancer
+spec:
+  type: LoadBalancer
+  selector:
+    app: app-um-deployment
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 3333
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-um-deployment
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: app-um-deployment
+  template:
+    metadata:
+      labels:
+        app: app-um-deployment
+    spec:
+      containers:
+      - name: app-um-container
+        image: registry.digitalocean.com/app-um/app-um-image
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 3333
+            protocol: TCP
+      imagePullSecrets:
+      - name: registry-app-um
