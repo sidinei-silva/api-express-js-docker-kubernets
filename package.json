@@ -5,7 +5,9 @@
   "author": "Sidinei Silva <sidinei.silva02@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start:development": "nodemon src/server.js"
+    "start:development": "nodemon src/server.js",
+    "build": "sucrase ./src -d ./dist --transforms imports",
+    "start:production": "node dist/server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
