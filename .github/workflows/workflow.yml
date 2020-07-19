@@ -30,3 +30,12 @@ jobs:
 
     - name: Push image to DigitalOcean Container Registry
       run: docker push registry.digitalocean.com/app-um/app-um-image:latest
+
+    - name: Save DigitalOcean kubeconfig
+      run: doctl kubernetes cluster kubeconfig save teste-kubernetes
+
+    - name: Deploy to DigitalOcean Kubernetes
+      run: kubectl apply -f $GITHUB_WORKSPACE/k8s/manifest.yml
+
+    - name: Update deployment
+      run: kubectl rollout restart deployment/app-um-deployment
