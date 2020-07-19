@@ -36,6 +36,12 @@ spec:
       - name: app-um-container
         image: registry.digitalocean.com/app-um/app-um-image
         imagePullPolicy: Always
+        env:
+        - name: HELLO_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: app-env-config
+              key: HELLO_ENV
         ports:
           - containerPort: 3333
             protocol: TCP
